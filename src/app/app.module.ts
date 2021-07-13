@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { LayoutModule } from './layout/layout.module';
 import { UsersModule } from './users/users.module';
+import { HttpClientModule } from '@angular/common/http';
+
+import
 
 @NgModule({
   declarations: [
@@ -15,6 +18,7 @@ import { UsersModule } from './users/users.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatSidenavModule,
     LayoutModule,

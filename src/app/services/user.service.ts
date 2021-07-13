@@ -10,7 +10,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   listUsers(){
-    this.http.get(baseUrl + 'users')
+    return this.http.get(this.baseUrl + 'users')
   }
 
 }

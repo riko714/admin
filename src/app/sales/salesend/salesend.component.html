@@ -1,0 +1,36 @@
+
+<!-- <ul>
+    <li *ngFor="let sale of dataSource">
+       PLU =  {{ sale.Barcode }}
+
+    </li>
+</ul>  -->
+{{listSales | json}}
+
+
+<table mat-table  [dataSource]="listSales" class="mat-elevation-z8">
+    
+    <ng-container matColumnDef="Barcode"> 
+        <th mat-header-cell *matHeaderCellDef>PLU</th>
+        <td mat-cell *matCellDef="let sale">{{ sale.Barcode }}</td >
+    </ng-container>
+    <ng-container matColumnDef="Brand"> 
+        <th mat-header-cell *matHeaderCellDef>Brand</th>
+        <td mat-cell *matCellDef="let sale">{{ sale.Brand }}</td >
+    </ng-container>
+
+    <ng-container matColumnDef="BeginDate">
+        <th mat-header-cell *matHeaderCellDef>BeginDate </th>
+        <td mat-cell *matCellDef="let sale">{{ sale.BeginDate }}</td >
+    </ng-container>
+
+    <ng-container matColumnDef="EndDate">
+        <th mat-header-cell *matHeaderCellDef>EndDate </th>
+        <td mat-cell *matCellDef="let sale">{{ sale.EndDate }}</td >
+    </ng-container>
+    
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+</table>

@@ -8,6 +8,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { LayoutModule } from './layout/layout.module';
 import { UsersModule } from './users/users.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SalesModule } from './sales/sales.module';
+import {MatTableModule} from '@angular/material/table';
+
+
 
 
 
@@ -22,7 +26,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatSidenavModule,
     LayoutModule,
-    UsersModule
+    UsersModule, 
+    SalesModule,
+    MatTableModule    
   ],
   providers: [],
   bootstrap: [AppComponent]

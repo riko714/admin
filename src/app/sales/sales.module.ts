@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { SalesendComponent } from './salesend/salesend.component';
 
 import { MatTableModule } from '@angular/material/table' ;
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 @NgModule({
   declarations: [
@@ -10,7 +13,9 @@ import { MatTableModule } from '@angular/material/table' ;
   ],
   imports: [
     CommonModule,
-    MatTableModule
+    MatTableModule,
+    MatTooltipModule,
+    MatPaginatorModule
   ],
 
   exports: [

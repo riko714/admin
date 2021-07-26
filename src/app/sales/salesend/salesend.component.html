@@ -5,32 +5,80 @@
 
     </li>
 </ul>  -->
-{{listSales | json}}
+<!-- {{listSales | json}} -->
 
-
+<div class="mat-elevation-z8">
 <table mat-table  [dataSource]="listSales" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="CategoryEN"> 
+        <th mat-header-cell *matHeaderCellDef>Category</th>
+        <td mat-cell *matCellDef="let sale">{{ sale.CategoryEN }}</td >
+    </ng-container>
     
     <ng-container matColumnDef="Barcode"> 
         <th mat-header-cell *matHeaderCellDef>PLU</th>
         <td mat-cell *matCellDef="let sale">{{ sale.Barcode }}</td >
     </ng-container>
+
     <ng-container matColumnDef="Brand"> 
         <th mat-header-cell *matHeaderCellDef>Brand</th>
         <td mat-cell *matCellDef="let sale">{{ sale.Brand }}</td >
     </ng-container>
 
+    <ng-container matColumnDef="DESC_EN1"> 
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let sale">{{ sale.DESC_EN1 }}</td >
+    </ng-container>
+
+    <ng-container matColumnDef="Regular_Price"> 
+        <th mat-header-cell *matHeaderCellDef>MSRP</th>
+        <td mat-cell *matCellDef="let sale">{{ sale.Regular_Price | currency}}</td >
+    </ng-container>
+    <ng-container matColumnDef="SalePrice"> 
+        <th mat-header-cell *matHeaderCellDef>EDLP</th>
+        <td mat-cell matTooltip="{{1- (sale.SalePrice/ sale.Regular_Price) | percent }}" *matCellDef="let sale">{{ sale.SalePrice | currency}}</td >
+    </ng-container>
+
+
     <ng-container matColumnDef="BeginDate">
         <th mat-header-cell *matHeaderCellDef>BeginDate </th>
-        <td mat-cell *matCellDef="let sale">{{ sale.BeginDate }}</td >
+        <td mat-cell *matCellDef="let sale">{{ sale.BeginDate | date:'shortDate'}}</td >
     </ng-container>
 
     <ng-container matColumnDef="EndDate">
         <th mat-header-cell *matHeaderCellDef>EndDate </th>
-        <td mat-cell *matCellDef="let sale">{{ sale.EndDate }}</td >
+        <td mat-cell *matCellDef="let sale">{{ sale.EndDate | date:'shortDate' }}</td >
     </ng-container>
+
+    
+    <ng-container matColumnDef="ItemQty">
+        <th mat-header-cell *matHeaderCellDef>Qty </th>
+        <td mat-cell *matCellDef="let sale">{{ sale.ItemQty }}</td >
+    </ng-container>
+    
+    <ng-container matColumnDef="TotalPrice">
+        <th mat-header-cell *matHeaderCellDef>Sales </th>
+        <td mat-cell matTooltip="{{1-((sale.TotalPrice/sale.ItemQty )/ sale.Regular_Price ) | percent }}" *matCellDef="let sale">{{ sale.TotalPrice | currency }}</td >
+    </ng-container>
+
+    
+    <ng-container matColumnDef="On_hand"> 
+        <th mat-header-cell *matHeaderCellDef>ONHAND</th>
+        <td mat-cell *matCellDef="let sale">{{ sale.On_hand}}</td >
+    </ng-container>
+
+
+
+
+
+
+
     
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
 
 </table>
+
+
+</div>

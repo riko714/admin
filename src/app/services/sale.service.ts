@@ -13,7 +13,7 @@ export class SaleService {
   constructor(private http: HttpClient) {    
   }
 
-  listSales(){
+  getlistSales(){
     console.log(this.baseUrl+'endsales');
     return this.http.get(this.baseUrl+'endsales');
 

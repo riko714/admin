@@ -8,45 +8,45 @@
 <!-- {{listSales | json}} -->
 
 <div class="mat-elevation-z8">
-<table mat-table  [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table  [dataSource]="dataSource" matSort >
 
     <ng-container matColumnDef="CategoryEN"> 
-        <th mat-header-cell *matHeaderCellDef>Category</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header >Category</th>
         <td mat-cell *matCellDef="let sale">{{ sale.CategoryEN }}</td >
     </ng-container>
     
-    <ng-container matColumnDef="Barcode"> 
-        <th mat-header-cell *matHeaderCellDef>PLU</th>
+    <ng-container matColumnDef="Barcode" > 
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>PLU</th>
         <td mat-cell *matCellDef="let sale">{{ sale.Barcode }}</td >
     </ng-container>
 
-    <ng-container matColumnDef="Brand"> 
-        <th mat-header-cell *matHeaderCellDef>Brand</th>
+    <ng-container matColumnDef="Brand" > 
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Brand</th>
         <td mat-cell *matCellDef="let sale">{{ sale.Brand }}</td >
     </ng-container>
 
-    <ng-container matColumnDef="DESC_EN1"> 
-        <th mat-header-cell *matHeaderCellDef>Description</th>
+    <ng-container matColumnDef="DESC_EN1" > 
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
         <td mat-cell *matCellDef="let sale">{{ sale.DESC_EN1 }}</td >
     </ng-container>
 
-    <ng-container matColumnDef="Regular_Price"> 
+    <ng-container matColumnDef="Regular_Price" > 
         <th mat-header-cell *matHeaderCellDef>MSRP</th>
         <td mat-cell *matCellDef="let sale">{{ sale.Regular_Price | currency}}</td >
     </ng-container>
-    <ng-container matColumnDef="SalePrice"> 
+    <ng-container matColumnDef="SalePrice" > 
         <th mat-header-cell *matHeaderCellDef>EDLP</th>
         <td mat-cell matTooltip="{{1- (sale.SalePrice/ sale.Regular_Price) | percent }}" *matCellDef="let sale">{{ sale.SalePrice | currency}}</td >
     </ng-container>
 
 
-    <ng-container matColumnDef="BeginDate">
-        <th mat-header-cell *matHeaderCellDef>BeginDate </th>
+    <ng-container matColumnDef="BeginDate" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>BeginDate </th>
         <td mat-cell *matCellDef="let sale">{{ sale.BeginDate | date:'shortDate'}}</td >
     </ng-container>
 
-    <ng-container matColumnDef="EndDate">
-        <th mat-header-cell *matHeaderCellDef>EndDate </th>
+    <ng-container matColumnDef="EndDate" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>EndDate </th>
         <td mat-cell *matCellDef="let sale">{{ sale.EndDate | date:'shortDate' }}</td >
     </ng-container>
 
@@ -62,15 +62,15 @@
     </ng-container>
 
     
-    <ng-container matColumnDef="On_hand"> 
-        <th mat-header-cell *matHeaderCellDef>ONHAND</th>
+    <ng-container matColumnDef="On_hand" > 
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ONHAND</th>
         <td mat-cell *matCellDef="let sale"><b>{{ sale.On_hand}}</b></td >
     </ng-container>
 
 
     
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+  <tr mat-row  *matRowDef="let row; columns: displayedColumns;"></tr>
 
 
 </table>

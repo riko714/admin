@@ -5,6 +5,7 @@ import { SalesendComponent } from './salesend/salesend.component';
 import { MatTableModule } from '@angular/material/table' ;
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     CommonModule,
     MatTableModule,
     MatTooltipModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule 
   ],
 
   exports: [

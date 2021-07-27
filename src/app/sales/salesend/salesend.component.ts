@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SaleService } from 'src/app/services/sale.service';
-import {AfterViewInit,  ViewChild} from '@angular/core';
+
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { DataSource } from '@angular/cdk/collections';
@@ -22,9 +22,8 @@ export class SalesendComponent implements OnInit {
   listSales : any;
   public itemSale: any = [];
   public dataSource: any;
-  @ViewChild(MatSort, { static: true }) sort!: MatSort;
-  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
-  
+  @ViewChild(MatPaginator ) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   
   displayedColumns: string[] = ['CategoryEN','Barcode','Brand', 'DESC_EN1','Regular_Price','SalePrice','BeginDate', 'EndDate', 'ItemQty', 'TotalPrice', 'On_hand'];
 
@@ -43,14 +42,19 @@ export class SalesendComponent implements OnInit {
   
 
 
+
   loadData(){
     return this.saleService.getlistSales().subscribe(data => {
       console.log(data);
       this.itemSale = data;
       this.dataSource = new MatTableDataSource(this.itemSale);
-      this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
-      console.log(this.dataSource);
+      this.dataSource.sort = this.sort;
+      
+      // console.log(this.dataSource);
+      console.log(this.paginator);
+      console.log(this.sort);
+
      
       
     } );

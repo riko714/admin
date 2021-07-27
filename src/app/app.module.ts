@@ -10,7 +10,7 @@ import { UsersModule } from './users/users.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SalesModule } from './sales/sales.module';
 import {MatTableModule} from '@angular/material/table';
-
+import { JjproducsModule } from './jjproducs/jjproducs.module';
 
 
 
@@ -28,6 +28,7 @@ import {MatTableModule} from '@angular/material/table';
     LayoutModule,
     UsersModule, 
     SalesModule,
+    JjproducsModule,
     MatTableModule    
   ],
   providers: [],

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { JjlistProducsComponent } from './jjproducs/jjlist-producs/jjlist-producs.component';
 import { SalesendComponent } from './sales/salesend/salesend.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { DeleteUserComponent } from './users/delete-user/delete-user.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path:'delete/:id', component: DeleteUserComponent},
   {path:'edit/:id', component: EditUserComponent},
   {path:'salesend', component: SalesendComponent},
+  {path:'jjproducts', component: JjlistProducsComponent},
 ];
 
 @NgModule({

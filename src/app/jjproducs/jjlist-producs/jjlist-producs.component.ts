@@ -1,22 +1,20 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { SaleService } from 'src/app/services/sale.service';
+import { DataService } from 'src/app/services/data.service';
 
-import {MatPaginator} from '@angular/material/paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-import { MatSort, Sort } from '@angular/material/sort';
+
+import { MatSort } from '@angular/material/sort';
+
+
 @Component({
-  selector: 'app-salesend',
-  templateUrl: './salesend.component.html',
-  styleUrls: ['./salesend.component.scss']
+  selector: 'app-jjlist-producs',
+  templateUrl: './jjlist-producs.component.html',
+  styleUrls: ['./jjlist-producs.component.scss']
 })
+export class JjlistProducsComponent implements OnInit {
 
-
-
-
-
-
-export class SalesendComponent implements OnInit {
 
   listSales : any;
   public itemSale: any = [];
@@ -24,12 +22,13 @@ export class SalesendComponent implements OnInit {
   @ViewChild(MatPaginator ) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   
-  displayedColumns: string[] = ['CategoryEN','Barcode','Brand', 'DESC_EN1','Regular_Price','SalePrice','BeginDate', 'EndDate', 'ItemQty', 'TotalPrice', 'On_hand','Aisle'];
+  displayedColumns: string[] = ['Item', 'Description','Pack', 'Gross Price', 'Disc#','PLU','UnitCost','Regular_Price','SalePrice','On_hand','Sold7Days', 'Sold30Days','QTYSold',
+  'LastSold_date','VendorID','ReceivedDate', 'ReceivedQty','SoldSinceLastReceived','totalWaste', 'Last_Wasted','Aisle'];
 
   
   
 
-  constructor(private saleService: SaleService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     // this.saleService.getlistSales().subscribe(data => {
@@ -43,7 +42,7 @@ export class SalesendComponent implements OnInit {
 
 
   loadData(){
-    return this.saleService.getlistSales().subscribe(data => {
+    return this.dataService.getlistJJproducts().subscribe(data => {
       console.log(data);
       this.itemSale = data;
       this.dataSource = new MatTableDataSource(this.itemSale);
@@ -62,5 +61,4 @@ export class SalesendComponent implements OnInit {
 
 
   
-
-};
+}

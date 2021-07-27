@@ -20,48 +20,44 @@ import { MatSort, Sort } from '@angular/material/sort';
 export class SalesendComponent implements OnInit {
 
   listSales : any;
+  public itemSale: any = [];
+  public dataSource: any;
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   
   
   displayedColumns: string[] = ['CategoryEN','Barcode','Brand', 'DESC_EN1','Regular_Price','SalePrice','BeginDate', 'EndDate', 'ItemQty', 'TotalPrice', 'On_hand'];
 
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  
   
 
   constructor(private saleService: SaleService) { }
 
   ngOnInit(): void {
-
-    this.saleService.getlistSales().subscribe(data => {
-      console.log(data);
-      this.listSales = data;
-    }      
-    ); 
-    
-
+    // this.saleService.getlistSales().subscribe(data => {
+    //   console.log(data);
+    //   this.listSales = data;
+    // });   
+    this.loadData();
   };
-
   
 
-  ngAfterViewInit() {
-    
+
+  loadData(){
+    return this.saleService.getlistSales().subscribe(data => {
+      console.log(data);
+      this.itemSale = data;
+      this.dataSource = new MatTableDataSource(this.itemSale);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      console.log(this.dataSource);
+     
+      
+    } );
   }
 
 
-}
 
+  
 
-export interface PeriodicElement {
-  CategoryEN: string;
-  Barcode: number;
-  Brand: number;
-  DESC_EN1: string;
-  Regular_Price: number;
-  SalePrice: number;
-  BeginDate: string;
-  EndDate: string;
-  ItemQty: number;
-  TotalPrice: number;
-  On_hand: number;
 };
-
-var ELEMENT_DATA: PeriodicElement[]

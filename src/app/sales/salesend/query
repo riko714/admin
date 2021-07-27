@@ -1,0 +1,9 @@
+loadData(){
+    this.saleService.getlistSales().subscribe(data => {
+      console.log(data);
+      this.dataSource = new MatTableDataSource(this.itemSale);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      console.log(this.dataSource);
+      
+    }    
